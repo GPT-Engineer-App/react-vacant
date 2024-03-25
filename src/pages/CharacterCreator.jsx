@@ -15,14 +15,16 @@ const CharacterCreator = () => {
   useEffect(() => {
     fetch("https://www.dnd5eapi.co/api/races")
       .then((res) => res.json())
-      .then((data) => setRaces(data.results));
+      .then((data) => setRaces(data.results))
+      .catch((error) => console.error("Error fetching races:", error));
   }, []);
 
   useEffect(() => {
     if (selectedRace) {
       fetch("https://www.dnd5eapi.co/api/classes")
         .then((res) => res.json())
-        .then((data) => setClasses(data.results));
+        .then((data) => setClasses(data.results))
+        .catch((error) => console.error("Error fetching classes:", error));
     }
   }, [selectedRace]);
 
@@ -30,7 +32,8 @@ const CharacterCreator = () => {
     if (selectedClass) {
       fetch("https://www.dnd5eapi.co/api/backgrounds")
         .then((res) => res.json())
-        .then((data) => setBackgrounds(data.results));
+        .then((data) => setBackgrounds(data.results))
+        .catch((error) => console.error("Error fetching backgrounds:", error));
     }
   }, [selectedClass]);
 
@@ -60,7 +63,7 @@ const CharacterCreator = () => {
         ))}
       </Select>
 
-      {selectedRace && (
+      {selectedRace && selectedRace.traits && (
         <>
           <Text mt={4}>Racial Traits:</Text>
           <UnorderedList>
