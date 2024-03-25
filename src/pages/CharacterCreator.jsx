@@ -87,7 +87,7 @@ const CharacterCreator = () => {
         </>
       )}
 
-      {selectedClass && (
+      {selectedClass && backgrounds.length > 0 && (
         <>
           <Text mt={4}>Starting Equipment:</Text>
           {selectedClass.starting_equipment && (
@@ -116,7 +116,7 @@ const CharacterCreator = () => {
         </>
       )}
 
-      {selectedClass && (
+      {selectedClass && backgrounds.length > 0 && (
         <>
           <Text mt={4}>Select Background:</Text>
           <Select placeholder="Select background" onChange={(e) => setSelectedBackground(backgrounds.find((b) => b.name === e.target.value))}>
