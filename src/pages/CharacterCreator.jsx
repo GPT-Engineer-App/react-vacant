@@ -90,20 +90,29 @@ const CharacterCreator = () => {
       {selectedClass && (
         <>
           <Text mt={4}>Starting Equipment:</Text>
-          <UnorderedList>
-            {selectedClass.starting_equipment.map((equip, i) => (
-              <ListItem key={i}>
-                {equip.equipment.name} (x{equip.quantity})
-              </ListItem>
-            ))}
-          </UnorderedList>
+          {selectedClass.starting_equipment && (
+            <>
+              <Text mt={4}>Starting Equipment:</Text>
+              <UnorderedList>
+                {selectedClass.starting_equipment.map((equip, i) => (
+                  <ListItem key={i}>
+                    {equip.equipment.name} (x{equip.quantity})
+                  </ListItem>
+                ))}
+              </UnorderedList>
+            </>
+          )}
 
-          <Text mt={4}>Proficiencies:</Text>
-          <UnorderedList>
-            {selectedClass.proficiencies.map((prof) => (
-              <ListItem key={prof.index}>{prof.name}</ListItem>
-            ))}
-          </UnorderedList>
+          {selectedClass.proficiencies && (
+            <>
+              <Text mt={4}>Proficiencies:</Text>
+              <UnorderedList>
+                {selectedClass.proficiencies.map((prof) => (
+                  <ListItem key={prof.index}>{prof.name}</ListItem>
+                ))}
+              </UnorderedList>
+            </>
+          )}
         </>
       )}
 
